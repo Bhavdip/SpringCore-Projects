@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean name="universityInfo"
+		class="training.spring.core.xmlconfig.UniversityInfo">
+		<!-- Map properties this will inject setMethod setstudentMap -->
+		<property name="studentMap">
+			<map>
+				<!-- value reference passing object of student -->
+				<entry key="12" value-ref="stud0"></entry>
+				<entry key="1012" value-ref="stud10"></entry>
+				<entry key="323" value-ref="stud8"></entry>
+			</map>
+		</property>
+	</bean>
+	<!-- Bean Student 10th with object name/id stud10 -->
+	<bean id="stud10" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="1012"></property>
+		<property name="studentName" value="Ganesh"></property>
+		<property name="email" value="ganesh@gmail.com"></property>
+		<property name="gender" value="Male"></property>
+	</bean>
+	<!-- Bean Student 8th -->
+	<bean id="stud8" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="323"></property>
+		<property name="studentName" value="Sonal"></property>
+		<property name="email" value="sonal@gmail.com"></property>
+		<property name="gender" value="Female"></property>
+	</bean>
+	<!-- Bean Student 0th -->
+	<bean id="stud0" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="12"></property>
+		<property name="studentName" value="Vipul"></property>
+		<property name="email" value="vipul@yahoo.com"></property>
+		<property name="gender" value="Male"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="message" class="training.spring.core.model.Message">
+    	<property name="messageId" value="123"></property>
+    	<property name="message" value="Hello world!!!"></property>
+    </bean>
+    <alias name="message" alias="msg1"/>
+    <alias name="message" alias="msg2"/>
+</beans>

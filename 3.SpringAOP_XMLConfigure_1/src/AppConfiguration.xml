@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- We don't need to this; This is required only in annotation based AOP 
+		support -->
+	<!-- <aop:aspectj-autoproxy /> -->
+
+	<!-- 1.Target Object actual business logic/services/rule -->
+	<bean id="employeeManager"
+		class="training.spring.core.aop.service.EmployeeManagerImpl" />
+
+	<!-- 2.Spring Aspect Instance Bean (Cross cutting concerns/ requirement 
+		) -->
+
+	<!-- let say this aspect is for all method logging purpose -->
+	<bean id="logginAspectBean"
+		class="training.spring.core.aop.aspect.EmployeeCRUDLoggingAspect"></bean>
+
+	<!-- this only for transaction related pointcut should advice -->
+	<bean id="transactionAspectBean"
+		class="training.spring.core.aop.aspect.EmployeeCRUDTransactionAspect"></bean>
+
+	<!-- 3.Aspect configuration -->
+	<aop:config>
+
+		<!-- Spring AOP Pointcut definitions -->
+		<aop:pointcut
+			expression="execution(* training.spring.core.aop.service.EmployeeManager.*(..))"
+			id="logginOperation" />
+		<aop:pointcut
+			expression="execution(* training.spring.core.aop.service.EmployeeManager.getEmployeeById(..))"
+			id="transactionOpration" />
+
+		<!-- Spring AOP Aspect 1 Logging -->
+		<aop:aspect id="logginAspect" ref="logginAspectBean">
+			<!-- Spring AOP Advises -->
+			<aop:before method="logBefore"
+				pointcut-ref="logginOperation" />
+			<aop:after method="logAfter" pointcut-ref="logginOperation" />
+		</aop:aspect>
+
+		<!-- Spring AOP Aspect 2: Transaction -->
+		<aop:aspect id="transactionAspect"
+			ref="transactionAspectBean">
+			<aop:before method="getEmployeeById"
+				pointcut-ref="transactionOpration" />
+		</aop:aspect>
+
+	</aop:config>
+</beans>

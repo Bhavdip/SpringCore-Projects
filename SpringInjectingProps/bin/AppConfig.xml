@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="userInfo" class="traning.spring.core.xmlconfig.UserInfo">
+		<!-- Attributes name is properties -->
+		<property name="properties">
+			<!-- props tag from java.util.Properties -->
+			<props>
+				<prop key="usr_name">Bhavdip</prop>
+				<prop key="usr_pwd">User#2342390?</prop>
+				<prop key="usr_cookies">ABSDHSDHSDHSDSHDSDBSD2383283sdsdsn133919129212dwhdwhdwk</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

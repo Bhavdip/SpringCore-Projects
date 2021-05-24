@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+     <bean id="personTemplete" abstract="true">
+    	<property name="name" value="BhavdipkumarArvindbhaiSagar"></property>
+    	<property name="gender" value="Male"></property>
+    	<property name="address" value="Ahmedabad"></property>
+    	<property name="departmentName" value="Finance"></property>
+    	<property name="dnaPattern" value="zexorn"></property>
+    </bean>
+    <bean  id="employee" class="traning.spring.core.beans.Employee" parent="person">
+    	<property name="employeeId" value="12312"></property>
+    	<property name="name" value="AsmitaBhavdipKuamrSagar"></property>
+    	<property name="address" value="Ahmedabad"></property>
+    	<property name="departmentName" value="Sales"></property>
+    	<property name="gender" value="Female"></property>
+    </bean>
+    
+</beans>

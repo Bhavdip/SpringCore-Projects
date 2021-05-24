@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="engine"
+		class="taining.spring.core.spel.xmlconfig.Engine">
+		<property name="capacity" value="3200"></property>
+		<property name="horsePower" value="250"></property>
+		<property name="numberOfCylinders" value="6"></property>
+	</bean>
+	<bean id="someCar" class="taining.spring.core.spel.xmlconfig.Car">
+		<property name="make" value="Mahindra"></property>
+		<property name="model" value="007"></property>
+		<!--expressions are used to inject value #{engine} -->
+		<property name="engine" value="#{engine}"></property>
+		<!--expressions are used to inject value #{engine} -->
+		<property name="horsePower" value="#{engine.horsePower}" />
+	</bean>
+
+	<bean id="spelOperators"
+		class="taining.spring.core.spel.xmlconfig.CarOperator">
+		<property name="equal" value="#{1 == 1}" />
+		<property name="notEqual" value="#{1 lt 1}" />
+		<property name="greaterThanOrEqual"
+			value="#{someCar.engine.numberOfCylinders > 6}" />
+		<property name="and"
+			value="#{someCar.horsePower == 250 and someCar.engine.capacity lt 4000}" />
+		<property name="or"
+			value="#{someCar.horsePower > 300 or someCar.engine.capacity > 3000}" />
+		<property name="addString"
+			value="#{someCar.model + ' manufactured by ' + someCar.make}" />
+	</bean>
+</beans>

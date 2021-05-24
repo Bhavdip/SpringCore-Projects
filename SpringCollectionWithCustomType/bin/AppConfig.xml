@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="universityInfo"
+		class="training.spring.core.xmlconfig.UniversityInfo">
+		<!-- Array List Inject in setStudentList method  -->
+		<property name="studentList">
+			<array>
+				<ref bean="stud0" />
+				<ref bean="stud8" />
+				<ref bean="stud10" />
+				<ref bean="stud10" />
+			</array>
+		</property>
+		<!-- Set Inject in setStudentSet method  -->
+		<property name="studentSet">
+			<set>
+				<ref bean="stud0" />
+				<ref bean="stud8" />
+				<ref bean="stud10" />
+				<ref bean="stud10" />
+			</set>
+		</property>
+	</bean>
+	<!-- Bean Student 10th -->
+	<bean id="stud10" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="1012"></property>
+		<property name="studentName" value="Ganesh"></property>
+		<property name="email" value="ganesh@gmail.com"></property>
+		<property name="gender" value="Male"></property>
+	</bean>
+	<!-- Bean Student 8th -->
+	<bean id="stud8" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="323"></property>
+		<property name="studentName" value="Sonal"></property>
+		<property name="email" value="sonal@gmail.com"></property>
+		<property name="gender" value="Female"></property>
+	</bean>
+	<!-- Bean Student 0th -->
+	<bean id="stud0" class="training.spring.core.xmlconfig.Student">
+		<property name="studentId" value="12"></property>
+		<property name="studentName" value="Vipul"></property>
+		<property name="email" value="vipul@yahoo.com"></property>
+		<property name="gender" value="Male"></property>
+	</bean>
+
+</beans>
